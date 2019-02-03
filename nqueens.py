@@ -1,3 +1,4 @@
+import time
 """The n queens puzzle."""
 class NQueens:
     """Generate all valid solutions for the n queens puzzle"""
@@ -8,10 +9,12 @@ class NQueens:
         self.solve()
 
     def solve(self):
-        """Solve the n queens puzzle and print the number of solutions"""
+        initialTime = time.time()
         positions = [-1] * self.size
         self.put_queen(positions, 0)
         print("Found", self.solutions, "solutions.")
+        finalTime = time.time()
+        print("Time Difference is:", finalTime-initialTime)
 
     def put_queen(self, positions, target_row):
         """
@@ -70,7 +73,8 @@ class NQueens:
 
 def main():
     """Initialize and solve the n queens puzzle"""
-    NQueens(8)
+    n = input('Input number of Queens')
+    NQueens(n)    
 
 if __name__ == "__main__":
     # execute only if run as a script
